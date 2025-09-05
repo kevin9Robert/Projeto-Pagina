@@ -1,9 +1,32 @@
+/* #region global */
+
+ 
+/* CORES PADRÕES  */
+ 
+:root {
+    --clr-primary: #181818;
+    --clr-secondary: #3a3a3a;
+    --clr-accent: #FFD700;
+    --clr-card: #dbdbdb;
+    --clr-shadow: #ffffff;
+ 
+    /* TRANSPARENTES PARA OS BOTÕES */
+    --clr-no-color: transparent;
+ 
+    /* GRADIENTES */
+    --clr-gradient0: linear-gradient(to right, #181818 20%, #3a3a3a 50%, #9e9e9e 90%);
+     --clr-gradient1: linear-gradient(45deg, #5c5c5c 10%, #d8d8d8 90%);
+     --clr-gradient2: linear-gradient(45deg, #FFD700 10%, #fdff6f 90%);
+ 
+ 
+}
+/* endregion */
 body {
   background-color: white;
   color: white;
 }
 .card {
-  background-color: #1f1f1f;
+  background-color: #f3f3f3;
   border: none;
 }
 .card-title {
@@ -65,3 +88,10 @@ color: #f5c518;
   color: #666;
   
 }
+.pagination{
+  padding: 0.9rem;
+  margin: 0 auto;
+  justify-content: center;
+ }
+ 
+ 
