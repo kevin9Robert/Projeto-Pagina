@@ -1,0 +1,67 @@
+body {
+  background-color: white;
+  color: white;
+}
+.card {
+  background-color: #1f1f1f;
+  border: none;
+}
+.card-title {
+  color: #f5c518; /* amarelo típico do IMDB */
+}
+.footer-custom {
+  background-color: #af2424;
+  color: white;
+
+  p {
+    font-size: 140px; 
+    margin: 0;
+  }
+
+  &:hover {
+    background-color: #222;
+  }
+}
+.avalix-footer{
+  background: #111;
+  color: #aaa;
+  padding: 30px 20px;
+  text-align: center;
+  font-size: 14px;
+
+}
+.avalix-footer *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.avalix-footer a {
+color: #f5c518;
+text-decoration: none;
+margin: 0 auto;
+}
+.avalix-footer a:hover{
+  text-decoration: underline;
+}
+.avalix-footer .footer-container{
+  max-width: 1000px;
+  margin: 0 auto;
+
+}
+.avalix-footer .logof{
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 15px;
+
+}
+.avalix-footer .logof a{
+color: #f5c518;
+}
+.avalix-footer .footer-links{
+  margin-bottom: 15px;
+}
+.avalix-footer .copy{
+  font-size: 12px;
+  color: #666;
+  
+}
