@@ -22,7 +22,7 @@
 }
 /* endregion */
 body {
-  background-color: white;
+  background-color: var(--clr-primary);
   color: white;
 }
 .card {
@@ -38,7 +38,8 @@ body {
 
   p {
     font-size: 140px; 
-    margin: 0;
+    margin-top: 0;
+    
   }
 
   &:hover {
@@ -85,13 +86,188 @@ color: #f5c518;
 }
 .avalix-footer .copy{
   font-size: 12px;
-  color: #666;
+  text-align: center;
+  margin-top: 15px;   /* espaço entre ícones e o texto */
+  font-size: 0.9rem;  /* opcional: deixa o texto menor */
+  color: #ccc;        /* opcional: cor mais suave */
+
   
 }
-.pagination{
+/* Estilização da paginação usando as variáveis definidas */
+nav[aria-label="Paginas"] {
+  display: flex;              /* ativa flexbox no nav */
+  justify-content: center;    /* centraliza horizontalmente */
+}
+
+.pagination.container {
+  max-width: none !important; /* remove limite de largura do container */
+  padding-left: 0 !important; /* remove padding padrão do container */
+  margin: 0.1;                  /* remove margem */
+  display: flex;              /* mantém o flex do bootstrap */
+  justify-content: center;    /* centraliza os itens da paginação */
+  width: auto;                /* largura automática */
+}
+
+.pagination .page-link {
+  background-color: var(--clr-secondary); /* fundo cinza escuro */
+  color: var(--clr-accent); /* texto amarelo */
+  border: 1px solid var(--clr-accent);
+  transition: all 0.3s ease;
   padding: 0.9rem;
-  margin: 0 auto;
+  margin: auto;
   justify-content: center;
- }
+}
+
+.pagination .page-link:hover {
+  background-color: var(--clr-accent); /* fundo amarelo no hover */
+  color: var(--clr-primary); /* texto escuro */
+}
+
+.pagination .page-item.active .page-link {
+  background-color: var(--clr-accent);
+  color: var(--clr-primary);
+  border-color: var(--clr-accent);
+}
+/* #region social*/
+.social-icons {
+  display: flex;
+  gap: 8px; 
+  justify-content: center;
+  margin-top: 15px;
+}
+.social-icons a {
+  margin: 0 5px; /* controla o espaço lateral entre ícones */
+  display: inline-block;
+}
+
+
+.social-icons a img {
+  width: 20px;   /* tamanho da imagem */
+  height: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border-radius: 50%; /* se quiser redondinho */
+  
+  
+  
+}
+
+/* Efeito hover */
+.social-icons a img:hover {
+  transform: scale(1.15);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  
+}
+/*#endregion social*/
  
- 
+ /* ==========================
+   RESPONSIVIDADE
+   ========================== */
+
+/* Telas grandes (desktops maiores que 1200px) */
+@media (min-width: 1200px) {
+  .footer-container {
+    max-width: 1200px;
+  }
+}
+
+/* Tablets e notebooks médios (até 992px) */
+@media (max-width: 992px) {
+  body {
+    font-size: 15px;
+  }
+
+  .avalix-footer .footer-links {
+    font-size: 0.95rem;
+  }
+
+  .pagination .page-link {
+    padding: 0.7rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Tablets menores / celulares grandes (até 768px) */
+@media (max-width: 768px) {
+  /* Footer */
+  .avalix-footer .footer-links {
+    display: flex;
+    flex-direction: column; /* links ficam em coluna */
+    gap: 8px;
+    margin-bottom: 15px;
+  }
+
+  .avalix-footer .logof {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .social-icons {
+    gap: 6px; /* menos espaço */
+  }
+
+  .social-icons a img {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Paginação */
+  .pagination.container {
+    flex-wrap: wrap; /* quebra de linha se necessário */
+    gap: 4px;
+  }
+
+  .pagination .page-link {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Celulares pequenos (até 480px) */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .avalix-footer .copy {
+    font-size: 0.75rem;
+    margin-top: 10px;
+  }
+
+  .avalix-footer .footer-links {
+    font-size: 0.85rem;
+  }
+
+  .social-icons a img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* #region qrcode */
+.qrcode-box {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.qrcode-box p {
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: #f5c518; /* amarelinho destaque */
+}
+
+.qrcode-box img {
+  width: 120px;   /* tamanho do QR */
+  height: auto;
+  border: 2px solid #f5c518;
+  border-radius: 8px;
+  padding: 6px;
+  background: #fff; /* deixa contraste melhor */
+  transition: transform 0.2s;
+}
+
+.qrcode-box img:hover {
+  transform: scale(1.05);
+}
+/* #endregion qrcode */
+
