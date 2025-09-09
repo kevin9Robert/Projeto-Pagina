@@ -1,8 +1,10 @@
 /* #region global */
-
+@font-face {
+    font-family: 'lemonmilk-bold';
+    src: url(../font/LEMONMILK-Bold.otf) format('opentype');
+}
  
 /* CORES PADRÕES  */
- 
 :root {
     --clr-primary: #181818;
     --clr-secondary: #3a3a3a;
@@ -14,45 +16,274 @@
     --clr-no-color: transparent;
  
     /* GRADIENTES */
-    --clr-gradient0: linear-gradient(to right, #181818 20%, #3a3a3a 50%, #9e9e9e 90%);
-     --clr-gradient1: linear-gradient(45deg, #5c5c5c 10%, #d8d8d8 90%);
-     --clr-gradient2: linear-gradient(45deg, #FFD700 10%, #fdff6f 90%);
- 
- 
+    --clr-gradient0: linear-gradient(to right,  #9e9e9e 20%, var(--clr-secondary) 50%,var(--clr-primary) 90%);
+    --clr-gradient1: linear-gradient(45deg, #5c5c5c 10%, #d8d8d8 90%);
+    --clr-gradient2: linear-gradient(45deg, var(--clr-accent) 10%, #fdff6f 90%);
 }
 /* endregion */
+ 
+/* ===========================
+   GERAL
+=========================== */
 body {
-  background-color: var(--clr-primary);
-  color: white;
+    background: var(--clr-gradient0); /* degrade aplicado no fundo */
+    color: var(--clr-shadow);
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
 }
-.card {
-  background-color: #f3f3f3;
-  border: none;
+ 
+/* ===========================
+   SEÇÃO FILMES
+=========================== */
+.section-filmes {
+    padding: 60px 0;
+    background: var(--clr-gradient0);
+    border-radius: 8px;
 }
+ 
+/* ===========================
+   TÍTULO
+=========================== */
+.section-filmes h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 40px;
+    text-align: center;
+    color: var(--clr-shadow);
+    font-family: 'lemonmilk-bold', sans-serif;
+}
+ 
+.section-filmes h2 span:first-child {
+    color: var(--clr-shadow);
+}
+ 
+.section-filmes h2 span:last-child {
+    background: var(--clr-gradient2); /* degrade dourado */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+ 
+/* Bolinha fora do card, lado direito */
+.perfil-avaliador {
+  position: absolute;
+  top: 20px;
+  right: -30px; /* joga pra fora do card */
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--clr-accent);
+  background: var(--clr-secondary);
+  box-shadow: 0 0 6px rgba(0,0,0,0.5);
+}
+.titulo-perfil {
+  display: block;
+  font-size: 10px;
+  font-weight: bold;
+  margin-bottom: 5px; /* espaço entre título e imagem */
+  color: #333; /* cor do texto, você pode mudar */
+}
+ 
+.perfil-avaliador img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+ 
+ 
+/* ===========================
+   CARDS
+=========================== */
+.card-filme {
+    background: var(--clr-no-color);
+    border: none;
+    border-bottom: 2px solid var(--clr-accent);
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+     position: relative;
+}
+ 
+.card-filme:last-child {
+    border-bottom: none;
+}
+ 
+.card-body {
+    padding-left: 20px;
+}
+ 
+/* ===========================
+   TEXTO DENTRO DOS CARDS
+=========================== */
 .card-title {
-  color: #f5c518; /* amarelo típico do IMDB */
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--clr-shadow);
+    font-family: 'lemonmilk-bold', sans-serif;
 }
-.footer-custom {
-  background-color: #af2424;
-  color: white;
-
-  p {
-    font-size: 140px; 
-    margin-top: 0;
-    
-  }
-
-  &:hover {
-    background-color: #222;
+ 
+.genero {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: var(--clr-accent);
+    font-family: Arial, sans-serif;
+}
+ 
+.card-text {
+    color: var(--clr-card);
+    font-size: 0.95rem;
+    font-family: Arial, sans-serif;
+}
+ 
+.info-final {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: var(--clr-secondary);
+    font-style: italic;
+    font-family: Arial, sans-serif;
+}
+ 
+/* ===========================
+   IMAGENS
+=========================== */
+.card-filme img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 4px solid var(--clr-no-color);
+    background: var(--clr-gradient0); /* degrade aplicado na moldura */
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+ 
+/* ===========================
+   RATING (ESTRELAS)
+=========================== */
+.rating {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+ 
+.rating .star {
+    font-size: 1.2rem;
+    color: var(--clr-accent);
+    margin-right: 2px;
+}
+ 
+.rating .star.empty {
+    color: var(--clr-secondary);
+}
+ 
+/* meia estrela */
+.rating .star.half {
+    position: relative;
+    display: inline-block;
+    color: var(--clr-secondary); /* cor da parte vazia */
+}
+ 
+.rating .star.half::before {
+    content: "★";
+    position: absolute;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+    color: var(--clr-accent); /* parte preenchida */
+}
+ 
+.rating .note {
+    font-size: 0.9rem;
+    color: var(--clr-card);
+    margin-left: 8px;
+    font-family: Arial, sans-serif;
+}
+ 
+/* ===========================
+   TEXTO DIGITADO
+=========================== */
+#typed {
+    color: #FFD700;
+}
+ 
+/* ===========================
+   NOVA SEÇÃO SÉRIES - BACKGROUND PRETO E CARDS SÓLIDOS
+=========================== */
+.series-section {
+    padding: 60px 20px;
+    background: #000000;
+    border-radius: 12px;
+}
+.series-section h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 40px;
+    text-align: center; /* centraliza o texto */
+    color: var(--clr-shadow);
+    font-family: 'lemonmilk-bold', sans-serif;
+}
+ 
+.series-section h2 span:first-child {
+    color: var(--clr-shadow);
+}
+ 
+.series-section h2 span:last-child {
+    background: var(--clr-gradient2); /* degrade dourado */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+ 
+.custom-card {
+    background: #181818; /* fundo escuro dos cards */
+    border: none;
+    border-bottom: 2px solid var(--clr-accent);
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    position: relative;
+    color: var(--clr-shadow);
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4); /* sombra dourada */
+}
+ 
+.card-img-custom {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+    border: none;
+    background: #000000; /* fundo preto */
+}
+ 
+ 
+/* css do nicolas ↓ */
+.navbar .container{
+    width: 100%;
+    height: 75px;
+}
+ 
+.carousel-control-prev,
+.carousel-control-next {
+  top: 50%;                  /* centraliza verticalmente em relação ao container */
+  transform: translateY(-50%);
+  width: 5%;                  /* largura clicável da seta */
+}
+ 
+@media (max-width: 768px) {
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 10%;               /* aumenta área clicável em telas pequenas */
   }
 }
+/* css do nicolas ↑ */
+ 
+/* css do kevin ↓ */
 .avalix-footer{
   background: #111;
   color: #aaa;
   padding: 30px 20px;
   text-align: center;
   font-size: 14px;
-
+ 
 }
 .avalix-footer *{
   margin: 0;
@@ -70,13 +301,13 @@ margin: 0 auto;
 .avalix-footer .footer-container{
   max-width: 1000px;
   margin: 0 auto;
-
+ 
 }
 .avalix-footer .logof{
   font-size: 22px;
   font-weight: bold;
   margin-bottom: 15px;
-
+ 
 }
 .avalix-footer .logof a{
 color: #f5c518;
@@ -90,15 +321,15 @@ color: #f5c518;
   margin-top: 15px;   /* espaço entre ícones e o texto */
   font-size: 0.9rem;  /* opcional: deixa o texto menor */
   color: #ccc;        /* opcional: cor mais suave */
-
-  
+ 
+ 
 }
 /* Estilização da paginação usando as variáveis definidas */
 nav[aria-label="Paginas"] {
   display: flex;              /* ativa flexbox no nav */
   justify-content: center;    /* centraliza horizontalmente */
 }
-
+ 
 .pagination.container {
   max-width: none !important; /* remove limite de largura do container */
   padding-left: 0 !important; /* remove padding padrão do container */
@@ -107,7 +338,7 @@ nav[aria-label="Paginas"] {
   justify-content: center;    /* centraliza os itens da paginação */
   width: auto;                /* largura automática */
 }
-
+ 
 .pagination .page-link {
   background-color: var(--clr-secondary); /* fundo cinza escuro */
   color: var(--clr-accent); /* texto amarelo */
@@ -117,12 +348,12 @@ nav[aria-label="Paginas"] {
   margin: auto;
   justify-content: center;
 }
-
+ 
 .pagination .page-link:hover {
   background-color: var(--clr-accent); /* fundo amarelo no hover */
   color: var(--clr-primary); /* texto escuro */
 }
-
+ 
 .pagination .page-item.active .page-link {
   background-color: var(--clr-accent);
   color: var(--clr-primary);
@@ -131,7 +362,7 @@ nav[aria-label="Paginas"] {
 /* #region social*/
 .social-icons {
   display: flex;
-  gap: 8px; 
+  gap: 8px;
   justify-content: center;
   margin-top: 15px;
 }
@@ -139,53 +370,53 @@ nav[aria-label="Paginas"] {
   margin: 0 5px; /* controla o espaço lateral entre ícones */
   display: inline-block;
 }
-
-
+ 
+ 
 .social-icons a img {
   width: 20px;   /* tamanho da imagem */
   height: 20px;
   transition: transform 0.2s, box-shadow 0.2s;
   border-radius: 50%; /* se quiser redondinho */
-  
-  
-  
+ 
+ 
+ 
 }
-
+ 
 /* Efeito hover */
 .social-icons a img:hover {
   transform: scale(1.15);
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  
+ 
 }
 /*#endregion social*/
  
  /* ==========================
    RESPONSIVIDADE
    ========================== */
-
+ 
 /* Telas grandes (desktops maiores que 1200px) */
 @media (min-width: 1200px) {
   .footer-container {
     max-width: 1200px;
   }
 }
-
+ 
 /* Tablets e notebooks médios (até 992px) */
 @media (max-width: 992px) {
   body {
     font-size: 15px;
   }
-
+ 
   .avalix-footer .footer-links {
     font-size: 0.95rem;
   }
-
+ 
   .pagination .page-link {
     padding: 0.7rem;
     font-size: 0.85rem;
   }
 }
-
+ 
 /* Tablets menores / celulares grandes (até 768px) */
 @media (max-width: 768px) {
   /* Footer */
@@ -195,67 +426,67 @@ nav[aria-label="Paginas"] {
     gap: 8px;
     margin-bottom: 15px;
   }
-
+ 
   .avalix-footer .logof {
     font-size: 18px;
     margin-bottom: 10px;
   }
-
+ 
   .social-icons {
     gap: 6px; /* menos espaço */
   }
-
+ 
   .social-icons a img {
     width: 18px;
     height: 18px;
   }
-
+ 
   /* Paginação */
   .pagination.container {
     flex-wrap: wrap; /* quebra de linha se necessário */
     gap: 4px;
   }
-
+ 
   .pagination .page-link {
     padding: 0.5rem 0.6rem;
     font-size: 0.8rem;
   }
 }
-
+ 
 /* Celulares pequenos (até 480px) */
 @media (max-width: 480px) {
   body {
     font-size: 14px;
     line-height: 1.4;
   }
-
+ 
   .avalix-footer .copy {
     font-size: 0.75rem;
     margin-top: 10px;
   }
-
+ 
   .avalix-footer .footer-links {
     font-size: 0.85rem;
   }
-
+ 
   .social-icons a img {
     width: 16px;
     height: 16px;
   }
 }
-
+ 
 /* #region qrcode */
 .qrcode-box {
   margin-top: 20px;
   text-align: center;
 }
-
+ 
 .qrcode-box p {
   margin-bottom: 8px;
   font-size: 0.9rem;
   color: #f5c518; /* amarelinho destaque */
 }
-
+ 
 .qrcode-box img {
   width: 120px;   /* tamanho do QR */
   height: auto;
@@ -265,9 +496,47 @@ nav[aria-label="Paginas"] {
   background: #fff; /* deixa contraste melhor */
   transition: transform 0.2s;
 }
-
+ 
 .qrcode-box img:hover {
   transform: scale(1.05);
 }
 /* #endregion qrcode */
-
+ 
+/* css do kevin ↑ */
+ 
+/* css do nicolas ↓ */
+/* Itens do dropdown sempre amarelos */
+.dropdown-menu.bg-black .dropdown-item {
+  color: #ffc107 !important;   /* amarelo fixo */
+}
+ 
+/* Hover: fundo cinza escuro + texto amarelo */
+.dropdown-menu.bg-black .dropdown-item:hover,
+.dropdown-menu.bg-black .dropdown-item:focus {
+  background-color: #1a1a1a !important; /* cinza bem escuro */
+  color: #ffc107 !important;            /* texto continua amarelo */
+}
+ 
+/* Forçando cor da letra na barra de pesquisa */
+::placeholder {
+  color: #ffc107 !important; /* amarelo bootstrap warning */
+  opacity: 0.9;
+}
+/* css do nicolas ↑ */
+ 
+.container {
+    background: var(--clr-no-color);
+    border: none;
+    border-bottom: 2px solid var(--clr-accent);
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    position: relative;
+}
+ 
+.text-center {
+    background: var(--clr-gradient0);
+}
+ 
+.carousel {
+    background: var(--clr-gradient0);
+}
